@@ -1,0 +1,24 @@
+version: '3.8'
+
+services:
+  postgres:
+    image: postgres:latest
+    container_name: postgres_container
+    environment:
+      POSTGRES_DB: seu_banco_de_dados
+      POSTGRES_USER: seu_usuario
+      POSTGRES_PASSWORD: sua_senha
+    ports:
+      - "5432:5432"
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+
+  adminer:
+    image: 'adminer:4.8.1'
+    container_name: ${CONTAINER_ADMINER_NAME}
+    restart: always
+    ports:
+      - 8081:8080
+
+volumes:
+  postgres_data:

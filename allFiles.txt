@@ -1,0 +1,722 @@
+Reading file: ./pom.xml
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd">
+	<modelVersion>4.0.0</modelVersion>
+	<parent>
+		<groupId>org.springframework.boot</groupId>
+		<artifactId>spring-boot-starter-parent</artifactId>
+		<version>3.2.10</version>
+		<relativePath/> <!-- lookup parent from repository -->
+	</parent>
+	<groupId>com.example</groupId>
+	<artifactId>demo</artifactId>
+	<version>0.0.1-SNAPSHOT</version>
+    <packaging>jar</packaging>
+    <name>demo</name>
+	<description>Demo project for Spring Boot</description>
+	<url/>
+	<licenses>
+		<license/>
+	</licenses>
+	<developers>
+		<developer/>
+	</developers>
+
+    <scm>
+		<connection/>
+		<developerConnection/>
+		<tag/>
+		<url/>
+	</scm>
+    <properties>
+        <java.version>21</java.version>
+        <maven.compiler.source>21</maven.compiler.source>
+        <maven.compiler.target>21</maven.compiler.target>
+		<spring.config.location>classpath:application.properties</spring.config.location>
+    </properties>
+
+	<dependencies>
+
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter</artifactId>
+		</dependency>
+
+		<dependency>
+			<groupId>org.projectlombok</groupId>
+			<artifactId>lombok</artifactId>
+			<optional>true</optional>
+		</dependency>
+
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-test</artifactId>
+			<scope>test</scope>
+		</dependency>
+
+		<dependency>
+    		<groupId>org.springframework.boot</groupId>
+    		<artifactId>spring-boot-starter-web</artifactId>
+		</dependency>
+
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-data-jpa</artifactId>
+		</dependency>
+
+		<dependency>
+			<groupId>org.postgresql</groupId>
+			<artifactId>postgresql</artifactId>
+			<version>42.6.2</version>
+			<scope>runtime</scope>
+		</dependency>
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-test</artifactId>
+		</dependency>
+
+	</dependencies>
+
+	<build>
+		<plugins>
+			<plugin>
+				<groupId>org.springframework.boot</groupId>
+				<artifactId>spring-boot-maven-plugin</artifactId>
+				<configuration>
+					<excludes>
+						<exclude>
+							<groupId>org.projectlombok</groupId>
+							<artifactId>lombok</artifactId>
+						</exclude>
+					</excludes>
+				</configuration>
+			</plugin>
+		</plugins>
+	</build>
+
+</project>
+
+================================================================================
+
+Reading file: ./leitura.py
+import os
+import fnmatch
+
+def read_files_in_directory(directory, patterns, output_file):
+    with open(output_file, 'w', encoding='utf-8') as outfile:
+        for root, dirs, files in os.walk(directory):
+            for pattern in patterns:
+                for filename in fnmatch.filter(files, pattern):
+                    filepath = os.path.join(root, filename)
+                    with open(filepath, 'r', encoding='utf-8') as file:
+                        outfile.write(f"Reading file: {filepath}\n")
+                        outfile.write(file.read())
+                        outfile.write("\n" + "="*80 + "\n\n")
+
+# Diretório do projeto
+project_directory = '.'
+
+# Padrões de arquivos a serem lidos
+file_patterns = ['*.java', '*.xml', '*.properties', '*.py', '*.yaml', '*.yml']
+
+# Nome do arquivo de saída
+output_file = 'allFiles.txt'
+
+# Ler todos os arquivos no diretório do projeto e escrever no arquivo de saída
+read_files_in_directory(project_directory, file_patterns, output_file)
+================================================================================
+
+Reading file: ./docker-compose.yml
+version: '3.8'
+
+services:
+  postgres:
+    image: postgres:latest
+    container_name: postgres_container
+    environment:
+      POSTGRES_DB: seu_banco_de_dados
+      POSTGRES_USER: seu_usuario
+      POSTGRES_PASSWORD: sua_senha
+    ports:
+      - "5432:5432"
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+
+  adminer:
+    image: 'adminer:4.8.1'
+    container_name: ${CONTAINER_ADMINER_NAME}
+    restart: always
+    ports:
+      - 8081:8080
+
+volumes:
+  postgres_data:
+================================================================================
+
+Reading file: ./target/classes/application.properties
+spring.application.name=demo
+spring.datasource.url=jdbc:postgresql://localhost:5432/seu_banco_de_dados
+spring.datasource.username=seu_usuario
+spring.datasource.password=sua_senha
+spring.jpa.hibernate.ddl-auto=update
+spring.jpa.show-sql=true
+
+
+================================================================================
+
+Reading file: ./.idea/modules.xml
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ProjectModuleManager">
+    <modules>
+      <module fileurl="file://$PROJECT_DIR$/demo.iml" filepath="$PROJECT_DIR$/demo.iml" />
+    </modules>
+  </component>
+</project>
+================================================================================
+
+Reading file: ./.idea/misc.xml
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ExternalStorageConfigurationManager" enabled="true" />
+  <component name="MavenProjectsManager">
+    <option name="originalFiles">
+      <list>
+        <option value="$PROJECT_DIR$/pom.xml" />
+      </list>
+    </option>
+  </component>
+  <component name="ProjectRootManager" version="2" languageLevel="JDK_21" project-jdk-name="21" project-jdk-type="JavaSDK" />
+</project>
+================================================================================
+
+Reading file: ./.idea/compiler.xml
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="CompilerConfiguration">
+    <annotationProcessing>
+      <profile default="true" name="Default" enabled="true" />
+      <profile name="Maven default annotation processors profile" enabled="true">
+        <sourceOutputDir name="target/generated-sources/annotations" />
+        <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
+        <outputRelativeToContentRoot value="true" />
+        <module name="demo" />
+      </profile>
+    </annotationProcessing>
+  </component>
+  <component name="JavacSettings">
+    <option name="ADDITIONAL_OPTIONS_OVERRIDE">
+      <module name="demo" options="-parameters" />
+    </option>
+  </component>
+</project>
+================================================================================
+
+Reading file: ./.idea/jarRepositories.xml
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="RemoteRepositoriesConfiguration">
+    <remote-repository>
+      <option name="id" value="central" />
+      <option name="name" value="Central Repository" />
+      <option name="url" value="https://repo.maven.apache.org/maven2" />
+    </remote-repository>
+    <remote-repository>
+      <option name="id" value="central" />
+      <option name="name" value="Maven Central repository" />
+      <option name="url" value="https://repo1.maven.org/maven2" />
+    </remote-repository>
+    <remote-repository>
+      <option name="id" value="jboss.community" />
+      <option name="name" value="JBoss Community repository" />
+      <option name="url" value="https://repository.jboss.org/nexus/content/repositories/public/" />
+    </remote-repository>
+  </component>
+</project>
+================================================================================
+
+Reading file: ./.idea/workspace.xml
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="AutoImportSettings">
+    <option name="autoReloadType" value="SELECTIVE" />
+  </component>
+  <component name="ChangeListManager">
+    <list default="true" id="e9ffe9be-2af1-4e9c-b5ac-50b23f5d80c9" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/.idea/.gitignore" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/docker-compose.yml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/target/classes/application.properties" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/target/classes/com/example/demo/DemoApplication.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/target/classes/com/example/demo/controller/CreateProductController.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/target/classes/com/example/demo/controller/GetProductController.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/target/classes/com/example/demo/controller/mapperControllerService/MapperProduct.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/target/classes/com/example/demo/controller/model/ProductRequest$ProductRequestBuilder.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/target/classes/com/example/demo/controller/model/ProductRequest.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/target/classes/com/example/demo/controller/model/ProductResponse$ProductResponseBuilder.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/target/classes/com/example/demo/controller/model/ProductResponse.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/target/classes/com/example/demo/external/CreateNewProduct.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/target/classes/com/example/demo/external/ProductRepository.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/target/classes/com/example/demo/external/mapperExternalService/MappExternal.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/target/classes/com/example/demo/external/model/ProductExternal$ProductExternalBuilder.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/target/classes/com/example/demo/external/model/ProductExternal.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/target/classes/com/example/demo/service/CreateProductService.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/target/classes/com/example/demo/service/model/ProductDTO$ProductDTOBuilder.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/target/classes/com/example/demo/service/model/ProductDTO.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/target/test-classes/com/example/demo/DemoApplicationTests.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/demo/external/model/ProductExternal.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/demo/external/model/ProductExternal.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/postman/postman_call.txt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/postman/postman_call.txt" afterDir="false" />
+    </list>
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="ProblemsViewState">
+    <option name="selectedTabId" value="CurrentFile" />
+  </component>
+  <component name="ProjectColorInfo">{
+  &quot;associatedIndex&quot;: 3
+}</component>
+  <component name="ProjectId" id="2oEH4Za1vDo4xpY3dJrrrkHbr5o" />
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;ASKED_SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,
+    &quot;Application.DemoApplication.executor&quot;: &quot;Debug&quot;,
+    &quot;Docker.docker-compose.yml.adminer: Compose Deployment.executor&quot;: &quot;Run&quot;,
+    &quot;Docker.docker-compose.yml: Compose Deployment.executor&quot;: &quot;Run&quot;,
+    &quot;Maven.demo [install].executor&quot;: &quot;Run&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.git.unshallow&quot;: &quot;true&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;branch01&quot;,
+    &quot;kotlin-language-version-configured&quot;: &quot;true&quot;,
+    &quot;last_opened_file_path&quot;: &quot;/home/fcafaro/desenv/personal/product&quot;,
+    &quot;project.structure.last.edited&quot;: &quot;Modules&quot;,
+    &quot;project.structure.proportion&quot;: &quot;0.15&quot;,
+    &quot;project.structure.side.proportion&quot;: &quot;0.2&quot;
+  }
+}</component>
+  <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$" />
+    </key>
+  </component>
+  <component name="RunManager" selected="Application.DemoApplication">
+    <configuration name="DemoApplication" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="com.example.demo.DemoApplication" />
+      <module name="demo" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="com.example.demo.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration default="true" type="JetRunConfigurationType">
+      <module name="product" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration default="true" type="KotlinStandaloneScriptRunConfigurationType">
+      <module name="product" />
+      <option name="filePath" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration default="true" type="docker-deploy" factoryName="docker-compose.yml" temporary="true">
+      <deployment type="docker-compose.yml">
+        <settings />
+      </deployment>
+      <method v="2" />
+    </configuration>
+    <configuration name="docker-compose.yml: Compose Deployment" type="docker-deploy" factoryName="docker-compose.yml" temporary="true" server-name="Docker">
+      <deployment type="docker-compose.yml">
+        <settings>
+          <option name="sourceFilePath" value="docker-compose.yml" />
+        </settings>
+      </deployment>
+      <method v="2" />
+    </configuration>
+    <configuration name="docker-compose.yml.adminer: Compose Deployment" type="docker-deploy" factoryName="docker-compose.yml" temporary="true" server-name="Docker">
+      <deployment type="docker-compose.yml">
+        <settings>
+          <option name="services">
+            <list>
+              <option value="adminer" />
+            </list>
+          </option>
+          <option name="sourceFilePath" value="docker-compose.yml" />
+        </settings>
+      </deployment>
+      <method v="2" />
+    </configuration>
+    <recent_temporary>
+      <list>
+        <item itemvalue="Application.DemoApplication" />
+        <item itemvalue="Docker.docker-compose.yml: Compose Deployment" />
+        <item itemvalue="Docker.docker-compose.yml.adminer: Compose Deployment" />
+      </list>
+    </recent_temporary>
+  </component>
+  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="e9ffe9be-2af1-4e9c-b5ac-50b23f5d80c9" name="Changes" comment="" />
+      <created>1730427624734</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1730427624734</updated>
+    </task>
+    <servers />
+  </component>
+  <component name="UnknownFeatures">
+    <option featureType="com.intellij.fileTypeFactory" implementationName="*.py" />
+  </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State />
+          </value>
+        </entry>
+      </map>
+    </option>
+  </component>
+</project>
+================================================================================
+
+Reading file: ./.idea/encodings.xml
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="Encoding">
+    <file url="file://$PROJECT_DIR$/src/main/java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/src/main/resources" charset="UTF-8" />
+  </component>
+</project>
+================================================================================
+
+Reading file: ./.idea/vcs.xml
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="VcsDirectoryMappings">
+    <mapping directory="" vcs="Git" />
+  </component>
+</project>
+================================================================================
+
+Reading file: ./src/test/java/com/example/demo/DemoApplicationTests.java
+package com.example.demo;
+
+import org.junit.jupiter.api.Test;
+import org.springframework.boot.test.context.SpringBootTest;
+
+@SpringBootTest
+class DemoApplicationTests {
+
+	@Test
+	void contextLoads() {
+	}
+
+}
+
+================================================================================
+
+Reading file: ./src/main/resources/application.properties
+spring.application.name=demo
+spring.datasource.url=jdbc:postgresql://localhost:5432/seu_banco_de_dados
+spring.datasource.username=seu_usuario
+spring.datasource.password=sua_senha
+spring.jpa.hibernate.ddl-auto=update
+spring.jpa.show-sql=true
+
+
+================================================================================
+
+Reading file: ./src/main/java/com/example/demo/DemoApplication.java
+package com.example.demo;
+
+import org.springframework.boot.SpringApplication;
+import org.springframework.boot.autoconfigure.SpringBootApplication;
+
+@SpringBootApplication
+public class DemoApplication {
+
+	public static void main(String[] args) {
+		SpringApplication.run(DemoApplication.class, args);
+	}
+
+}
+
+================================================================================
+
+Reading file: ./src/main/java/com/example/demo/controller/GetProductController.java
+package com.example.demo.controller;
+
+import org.springframework.web.bind.annotation.RestController;
+
+@RestController
+public class GetProductController {
+
+}
+
+================================================================================
+
+Reading file: ./src/main/java/com/example/demo/controller/CreateProductController.java
+package com.example.demo.controller;
+
+import com.example.demo.controller.model.ProductRequest;
+import com.example.demo.controller.model.ProductResponse;
+import com.example.demo.controller.mapperControllerService.MapperProduct;
+import com.example.demo.service.CreateProductService;
+import com.example.demo.service.model.ProductDTO;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.ResponseEntity;
+import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RestController;
+
+@Controller
+public class CreateProductController {
+
+    private final MapperProduct mapperProduct;
+    private final CreateProductService createProductService;
+
+    public CreateProductController(CreateProductService createProductService, MapperProduct mapperProduct) {
+        this.createProductService = createProductService;
+        this.mapperProduct = mapperProduct;
+    }
+
+    @PostMapping("/products")
+    // Devo retornar o produto ?
+    public ResponseEntity<ProductResponse> newProduct(@RequestBody ProductRequest productRequest) {
+
+        ProductDTO productDTO = mapperProduct.mapProductRequestToProductDTO(productRequest);
+
+        ProductDTO pro =  createProductService.createProduct(productDTO);
+
+        ProductResponse productResponse = mapperProduct.mapProductDTOToProductResponse(pro);
+
+        return ResponseEntity.ok(productResponse);
+    }
+}
+
+================================================================================
+
+Reading file: ./src/main/java/com/example/demo/controller/mapperControllerService/MapperProduct.java
+package com.example.demo.controller.mapperControllerService;
+
+import com.example.demo.controller.model.ProductRequest;
+import com.example.demo.controller.model.ProductResponse;
+import com.example.demo.service.model.ProductDTO;
+import org.springframework.stereotype.Component;
+
+@Component
+public class MapperProduct {
+
+    public ProductDTO mapProductRequestToProductDTO(ProductRequest productRequest) {
+        return ProductDTO.builder()
+            .name(productRequest.getName())
+            .description(productRequest.getDescription())
+            .price(productRequest.getPrice())
+            .build();
+    }
+
+    public ProductResponse mapProductDTOToProductResponse(ProductDTO productDTO) {
+        return ProductResponse.builder()
+            .name(productDTO.getName())
+            .description(productDTO.getDescription())
+            .price(productDTO.getPrice())
+            .build();
+    }
+}
+
+================================================================================
+
+Reading file: ./src/main/java/com/example/demo/controller/model/ProductResponse.java
+package com.example.demo.controller.model;
+
+import lombok.Builder;
+import lombok.Data;
+
+@Data
+@Builder
+public class ProductResponse {
+
+    private String name;
+    private String description;
+    private double price;
+}
+
+================================================================================
+
+Reading file: ./src/main/java/com/example/demo/controller/model/ProductRequest.java
+package com.example.demo.controller.model;
+
+import lombok.Builder;
+import lombok.Data;
+
+@Data
+@Builder
+public class ProductRequest {
+
+    public String name;
+    public String description;
+    public double price;
+
+}
+
+================================================================================
+
+Reading file: ./src/main/java/com/example/demo/service/CreateProductService.java
+package com.example.demo.service;
+
+import com.example.demo.external.ProductRepository;
+import com.example.demo.external.mapperExternalService.MappExternal;
+import com.example.demo.external.model.ProductExternal;
+import com.example.demo.service.model.ProductDTO;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+
+@Service
+public class CreateProductService {
+
+    private final MappExternal mappExternal;
+    private final ProductRepository productRepository;
+
+    public CreateProductService(MappExternal mappExternal, ProductRepository productRepository) {
+        this.mappExternal = mappExternal;
+        this.productRepository = productRepository;
+    }
+
+    public ProductDTO createProduct(ProductDTO productDTO) {
+
+        ProductExternal productExternal = mappExternal.mapProductDTOToProductExternal(productDTO);
+
+        var product = productRepository.save(productExternal);
+
+        return mappExternal.mapProductExternalToProductDTO(product);
+    }
+}
+
+================================================================================
+
+Reading file: ./src/main/java/com/example/demo/service/model/ProductDTO.java
+package com.example.demo.service.model;
+
+import lombok.Builder;
+import lombok.Data;
+
+@Data
+@Builder
+public class ProductDTO {
+
+        private String name;
+        private String description;
+        private double price;
+}
+
+================================================================================
+
+Reading file: ./src/main/java/com/example/demo/external/CreateNewProduct.java
+package com.example.demo.external;
+
+import com.example.demo.service.model.ProductDTO;
+
+public class CreateNewProduct {
+
+    public ProductDTO createNewProduct(ProductDTO productDTO) {
+        return ProductDTO.builder()
+            .name(productDTO.getName())
+            .description(productDTO.getDescription())
+            .price(productDTO.getPrice())
+            .build();
+    }
+}
+
+================================================================================
+
+Reading file: ./src/main/java/com/example/demo/external/ProductRepository.java
+package com.example.demo.external;
+
+import com.example.demo.external.model.ProductExternal;
+import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.stereotype.Repository;
+
+@Repository
+public interface ProductRepository extends JpaRepository<ProductExternal, Long>{
+
+}
+
+================================================================================
+
+Reading file: ./src/main/java/com/example/demo/external/mapperExternalService/MappExternal.java
+package com.example.demo.external.mapperExternalService;
+
+import com.example.demo.external.model.ProductExternal;
+import com.example.demo.service.model.ProductDTO;
+import org.springframework.stereotype.Component;
+
+@Component
+public class MappExternal {
+
+    public ProductDTO mapProductExternalToProductDTO(ProductExternal productExternal) {
+        return ProductDTO.builder()
+            .name(productExternal.getName())
+            .description(productExternal.getDescription())
+            .price(productExternal.getPrice())
+            .build();
+    }
+
+    public ProductExternal mapProductDTOToProductExternal(ProductDTO productDTO) {
+        return ProductExternal.builder()
+            .name(productDTO.getName())
+            .description(productDTO.getDescription())
+            .price(productDTO.getPrice())
+            .build();
+    }
+}
+
+================================================================================
+
+Reading file: ./src/main/java/com/example/demo/external/model/ProductExternal.java
+package com.example.demo.external.model;
+
+import jakarta.persistence.*;
+import lombok.AllArgsConstructor;
+import lombok.Builder;
+import lombok.Data;
+import lombok.NoArgsConstructor;
+
+@Data
+@Builder
+@NoArgsConstructor
+@AllArgsConstructor
+@Entity
+@Table(name = "product")  // Nome da tabela no banco de dados
+public class ProductExternal {
+
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long id;
+    private String name;
+    private String description;
+    private Double price;
+}
+
+================================================================================
+

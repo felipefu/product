@@ -1,0 +1,7 @@
+curl --location 'localhost:8080/products' \
+--header 'Content-Type: application/json' \
+--data '{
+"name": "001",
+"description": "002",
+"price": "254"
+}'
