@@ -26,4 +26,11 @@ public class CreateProductService {
 
         return mappExternal.mapProductExternalToProductDTO(product);
     }
+
+    public ProductDTO fallbackCreateProduct(ProductDTO productDTO, Throwable throwable) {
+        // Lógica para lidar com a falha na criação do produto
+        // Ex: Logar o erro, retornar um valor padrão, etc.
+//        log.error("Erro ao criar produto", throwable);
+        return null; // ou um ProductDTO com valores padrão
+    }
 }

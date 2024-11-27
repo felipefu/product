@@ -9,3 +9,21 @@ spring:
     hibernate:
       ddl-auto: update
     show-sql: true
+
+resilience4j.circuitbreaker:
+  instances:
+    productRepository:
+      registerHealthIndicator: true
+      slidingWindowSize: 10
+      permittedNumberOfCallsInHalfOpenState: 3
+      slowCallRateThreshold: 80
+      slowCallDurationThreshold: 2s
+      failureRateThreshold: 50
+      waitDurationInOpenState: 5s
+resilience4j.retry:
+  instances:
+    productRepository:
+      maxAttempts: 3
+      waitDuration: 1s
+      enableExponentialBackoff: true
+      exponentialBackoffMultiplier: 2
